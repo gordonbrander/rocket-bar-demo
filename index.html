@@ -1,0 +1,227 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!doctype html>
+<html lang="en" class="screen">
+<head>
+	<meta charset="utf-8">
+	<title>RocketBar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="normalize.css" type="text/css">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <style type="text/css" media="all">
+    /* Demo slides
+    ---------------------------------------------------------------------------
+
+    Each slide represents a state. Positioned off-screen to allow layout to
+    occur invisibly off to the side. */
+
+    .demo-slides {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .demo-slide {
+      height: 480px;
+      width: 320px;
+      overflow: hidden;
+      position: absolute;
+      /* Demo slides are positioned off-screen by default. */
+      left: -320px;
+      top: 0;
+    }
+    .demo-slide-activated {
+      height: auto;
+      min-height: 480px;
+      position: static;
+    }
+
+    /* Demo Pagination
+    ------------------------------------------------------------------------ */
+
+    .demo-slideshow {
+      position: relative;
+      width: 320px;
+    }
+
+    .demo-prev,
+    .demo-next {
+      bottom: 0;
+      position: absolute;
+      width: 50px;
+      top: 0;
+      z-index: 999;
+    }
+
+    .demo-prev {
+      left: 0;
+    }
+
+    .demo-next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <button id="install">Install</button>
+  <section class="demo-slideshow" id="demo-slideshow">
+    <a class="demo-prev" id="demo-prev" href="#go-prev"></a>
+    <a class="demo-next" id="demo-next" href="#go-next"></a>
+    <ul id="demo-slides" class="demo-slides">
+      <li class="demo-slide">
+        <form action="" method="get" class="action-pallette">
+          <div class="action-header">
+            <div class="action-fields">
+              <input type="input" class="action-bar" id="action-bar" placeholder="Search for anything&hellip;" value="">
+            </div>
+            <ul class="action-completions">
+            </ul>
+          </div>
+          <ul class="action-matches action-list" id="matches">
+          </ul>
+      </li>
+      <li class="demo-slide">
+        <form action="" method="get" class="action-pallette">
+          <div class="action-header">
+            <div class="action-fields">
+              <input type="input" class="action-bar" id="action-bar" placeholder="Search for anything&hellip;" value="jo">
+            </div>
+            <ul class="action-completions">
+              <li class="action-completion">
+                <span class="title"><b>Jo</b>hn Doe</span>
+              </li>
+              <li class="action-completion">
+                <span class="title"><b>Jo</b>hnny Fedora</span>
+              </li>
+            </ul>
+          </div>
+          <ul class="action-matches action-list" id="matches">
+            <li class="action-match messages-gaiamobile-org">
+              <section class="action-results">
+                <article class="action-result">
+                  <h1 class="title">John Doe</h1>
+                  <p class="subtitle">Still interested in lunch tomorrow?</p>
+                </article>
+                <article class="action-result">
+                  <h1 class="title">Johnny Fedora</h1>
+                  <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
+                </article>
+                <article class="action-result">
+                  <h1 class="title">Alice Smith</h1>
+                  <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
+                </article>
+              </section>
+            </li>
+            <li class="action-match contacts-gaiamobile-org">
+              <section class="action-results">
+                <article class="action-result">
+                  <h1 class="title">John Doe</h1>
+                  <p class="subtitle">(555) 555-5555</p>
+                </article>
+                <article class="action-result">
+                  <h1 class="title">Johnny Fedora</h1>
+                  <p class="subtitle">(555) 555-5555</p>
+                </article>
+              </section>
+            </li>
+            <li class="action-match music-gaiamobile-org">
+              <article class="action-entry">
+                <h1 class="title">Johnny Cash</h1>
+                <span class="subtitle">Artist / 14 songs / 3 Albums</span>
+              </article>
+            </li>
+            <li class="action-match email-gaiamobile-org">
+              <section class="action-results">
+                <article class="action-result">
+                  <h1 class="title">Amy Jo Johnson</h1> <p class="subtitle">Re: Espresso tips from a pro</p>
+                </article>
+                <article class="action-result">
+                  <h1 class="title">Johnny Fedora</h1>
+                  <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
+                </article>
+                <article class="action-result">
+                  <h1 class="title">Alice Smith</h1>
+                  <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
+                </article>
+              </section>
+            </li>
+          </ul>
+        </form>
+      </li>
+      <li class="demo-slide">
+        2
+      </li>
+      <li class="demo-slide">
+        3
+      </li>
+      <li class="demo-slide">
+        4
+      </li>
+    </ul>
+  </section>
+  <script type="text/javascript">
+    // Contains all slide app state.
+    var STATE = {
+      current: 0
+    };
+
+    function $$(id) {
+      return document.getElementById(id);
+    }
+
+    function within(num, min, max) {
+      // Normalize a number such that:
+      //
+      // * If it is less than min, min will be returned
+      // * If it is greater than max, max will be returned.
+      // * Otherwise, `num` will be returned.
+      return (num < min) ? min : Math.min(num, max);
+    }
+
+    function activateSlide(slidesUlEl, index) {
+      // Add activated class to child of slidesUlEl
+      // Returns index of affected element.
+      var children = slidesUlEl.children;
+      var childrenLength = children.length;
+
+      // Make sure the index does not fall outside of the range
+      // of the number of elements.
+      var boundedIndex = within(index, 0, childrenLength - 1);
+
+      var activatedClass = 'demo-slide-activated';
+
+      for (var i = 0; i < childrenLength; i += 1) {
+        children[i].classList.remove(activatedClass);
+      }
+
+      // Add activated class
+      slidesUlEl.children[boundedIndex].classList.add(activatedClass);
+
+      // Return the index affected.
+      return boundedIndex;
+    }
+
+    function goNextSlide(slidesUlEl, state) {
+      return (state.current = activateSlide(slidesUlEl, state.current + 1));
+    }
+
+    function goPrevSlide(slidesUlEl, state) {
+      return (state.current = activateSlide(slidesUlEl, state.current - 1));
+    }
+
+    var slidesUlEl = $$('demo-slides');
+    var slidesLiEls = slidesUlEl.children;
+    var slideshowEl = $$('demo-slideshow');
+    var nextEl = $$('demo-next');
+    var prevEl = $$('demo-prev');
+
+    var currentSlide = activateSlide(slidesUlEl, 0);
+
+    slideshowEl.addEventListener('click', function (event)  {
+      if (event.target === nextEl) goNextSlide(slidesUlEl, STATE);
+      if (event.target === prevEl) goPrevSlide(slidesUlEl, STATE);
+    });
+  </script>
+</body>
+</html>
