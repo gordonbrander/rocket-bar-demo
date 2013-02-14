@@ -150,7 +150,12 @@ Used to define background images for entries. */
 /* Individual action inside of an .action-match container.
 Styling inner element instead of .action-match allows us to be more flexible
 with how actions are rendered (widgets, autocomplete, etc). */
-.action-match > .action-entry {
+.action-entry {
+  display: block;
+  /* For cases where .action-entry is an <a>, set color to white and remove
+  underline. */
+  color: #fff;
+  text-decoration: none;
   height: 32px;
   padding: 10px 10px 10px 45px;
 }
