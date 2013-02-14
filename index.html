@@ -61,6 +61,18 @@
     .demo-next {
       right: 0;
     }
+
+    #install {
+      position: absolute;
+      top: 3em;
+      right: 0;
+      font-size: 1.5em;
+      border: 1px solid grey;
+      padding: .25em .5em;
+      margin: .5em 1em;
+      display: none;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
@@ -360,6 +372,21 @@
         event.preventDefault();
       }
     });
+
+    if(navigator.mozApps) {
+      var btn = document.getElementById('install');
+
+      btn.addEventListener('click', function() {
+        navigator.mozApps.install(location.href + 'manifest.webapp');
+      });
+
+      var req = navigator.mozApps.getSelf();
+      req.onsuccess = function() {
+        if(!req.result) {
+          document.getElementById('install').style.display = 'block';
+        }
+      };
+    }
   </script>
 </body>
 </html>
