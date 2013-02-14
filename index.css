@@ -105,6 +105,7 @@ Used to define background images for entries. */
 .messages-gaiamobile-org:before,
 .browser-gaiamobile-org:before,
 .email-gaiamobile-org:before,
+.bookmarks-gaiamobile-org:before,
 .facebook-com:before,
 .imdb-com:before,
 .yelp-com:before {
@@ -135,6 +136,9 @@ Used to define background images for entries. */
 }
 .email-gaiamobile-org:before {
   background-image: url(assets/Icon_E-Mail.png);
+}
+.bookmarks-gaiamobile-org:before {
+  background-image: url(assets/Icon_Bookmark.png);
 }
 .facebook-com:before {
   background-image: url(assets/Icon_Facebook.png);
