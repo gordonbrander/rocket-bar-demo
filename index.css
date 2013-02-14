@@ -260,3 +260,31 @@ of an .action-match. */
   display: block;
 }
 
+/* Action insert for in-place app rendering. */
+.action-insert {
+  overflow: hidden;
+  position: relative;
+}
+.action-insert:before {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .8);
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -1px;
+  z-index: 2;
+}
+.action-insert:after {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .8);
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+}
+.action-insert > img {
+  display: block;
+}
