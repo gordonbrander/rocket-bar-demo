@@ -151,6 +151,13 @@ Used to define background images for entries. */
   top: 110px;
 }
 
+.action-response {
+  font-size: 16px;
+  font-weight: normal;
+  padding: 20px 10px 8px;
+  margin: 0;
+}
+
 /* Individual action inside of an .action-match container.
 Styling inner element instead of .action-match allows us to be more flexible
 with how actions are rendered (widgets, autocomplete, etc). */
@@ -266,6 +273,8 @@ of an .action-match. */
 
 /* Action insert for in-place app rendering. */
 .action-insert {
+  border: 1px solid #000;
+  border-width: 1px 0;
   overflow: hidden;
   position: relative;
 }
