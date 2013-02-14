@@ -106,6 +106,7 @@ Used to define background images for entries. */
 .browser-gaiamobile-org:before,
 .email-gaiamobile-org:before,
 .bookmarks-gaiamobile-org:before,
+.maps-gaiamobile-org:before,
 .facebook-com:before,
 .imdb-com:before,
 .yelp-com:before {
@@ -140,6 +141,9 @@ Used to define background images for entries. */
 .bookmarks-gaiamobile-org:before {
   background-image: url(assets/Icon_Bookmark.png);
 }
+.maps-gaiamobile-org:before {
+  background-image: url(assets/Icon_Here_Maps.png);
+}
 .facebook-com:before {
   background-image: url(assets/Icon_Facebook.png);
 }
@@ -149,6 +153,10 @@ Used to define background images for entries. */
 .yelp-com:before {
   background-image: url(assets/Icon_Yelp.png);
   top: 110px;
+}
+
+.yelp-com-map {
+  display: block;
 }
 
 .action-response {
@@ -267,35 +275,29 @@ of an .action-match. */
   width: 7px;
 }
 
-.yelp-com-map {
-  display: block;
-}
-
 /* Action insert for in-place app rendering. */
 .action-insert {
-  border: 1px solid #000;
-  border-width: 1px 0;
   overflow: hidden;
   position: relative;
 }
 .action-insert:before {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .8);
+  background: url(assets/tear-off-top.png) repeat-x;
   content: '';
-  height: 1px;
+  height: 10px;
   left: 0;
   position: absolute;
   right: 0;
-  top: -1px;
+  top: 0;
   z-index: 2;
 }
 .action-insert:after {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .8);
+  background: url(assets/tear-off-bottom.png) repeat-x;
   content: '';
-  height: 1px;
+  height: 10px;
   left: 0;
   position: absolute;
   right: 0;
-  bottom: -1px;
+  bottom: 0;
   z-index: 2;
 }
 .action-insert > img {
