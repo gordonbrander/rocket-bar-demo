@@ -89,7 +89,7 @@
             </div>
             <ul class="action-completions">
               <li class="action-completion">
-                <span class="title"><b>Jo</b>hn Doe</span>
+                <a href="#demo-slide-conversation-stream" class="title"><b>Jo</b>hn Doe</a>
               </li>
               <li class="action-completion">
                 <span class="title"><b>Jo</b>hnny Fedora</span>
@@ -155,7 +155,7 @@
           </ul>
         </form>
       </li>
-      <li class="demo-slide">
+      <li class="demo-slide" id="demo-slide-conversation-stream">
         <form action="" method="get" class="action-pallette">
           <div class="action-header">
             <div class="action-fields">
@@ -262,8 +262,28 @@
       current: 0
     };
 
+    function lambda(method) {
+      // Convert a method func that uses a `this` context into a function that takes
+      // the context object as the first parameter.
+      return function (context) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return method.apply(context, args);
+      };
+    }
+
+    // Create lambda form of indexOf that will work on any array-like.
+    var indexOf = lambda(Array.prototype.indexOf);
+
     function $$(id) {
+      // A shortcut for getElementById.
       return document.getElementById(id);
+    }
+
+    function $(selector, element) {
+      // Shortcut for QSA. QSA is very fussy about how it is invoked
+      // so you can't do the usual (x || y).bla() trick.
+      return element ?
+        element.querySelectorAll(selector) : document.querySelectorAll(selector);
     }
 
     function within(num, min, max) {
@@ -306,6 +326,18 @@
       return (state.current = activateSlide(slidesUlEl, state.current - 1));
     }
 
+    function getIndexOfFirstChildBySelector(parent, childSelector) {
+      var matchingChildren = $(childSelector, parent);
+      var firstMatchingChild = matchingChildren[0];
+      return indexOf(parent.children, firstMatchingChild);
+    }
+
+    function activateSlideBySelector(slidesUlEl, selector, state) {
+      var index = getIndexOfFirstChildBySelector(slidesUlEl, selector);
+      return (index !== -1) ?
+        activateSlide(slidesUlEl, (state.current = index)) : state.current;
+    }
+
     var slidesUlEl = $$('demo-slides');
     var slidesLiEls = slidesUlEl.children;
     var slideshowEl = $$('demo-slideshow');
@@ -315,8 +347,18 @@
     var currentSlide = activateSlide(slidesUlEl, 0);
 
     slideshowEl.addEventListener('click', function (event)  {
-      if (event.target === nextEl) goNextSlide(slidesUlEl, STATE);
-      if (event.target === prevEl) goPrevSlide(slidesUlEl, STATE);
+      if (event.target === nextEl) {
+        goNextSlide(slidesUlEl, STATE);
+        event.preventDefault();
+      }
+      else if (event.target === prevEl) {
+        goPrevSlide(slidesUlEl, STATE);
+        event.preventDefault();
+      }
+      else {
+        activateSlideBySelector(slidesUlEl, event.target.hash, STATE);
+        event.preventDefault();
+      }
     });
   </script>
 </body>

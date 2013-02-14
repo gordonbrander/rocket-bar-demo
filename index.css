@@ -183,7 +183,6 @@ with how actions are rendered (widgets, autocomplete, etc). */
 .action-completion {
   background: url(assets/search.png) 8px 3px no-repeat;
   margin: 0;
-  padding: 10px 7px 10px 45px;
 }
 .action-completion > .title {
   display: block;
@@ -191,6 +190,9 @@ with how actions are rendered (widgets, autocomplete, etc). */
   font: normal normal 14px/16px MozTT, sans-serif;
   margin: 0;
   overflow: hidden;
+  padding: 10px 7px 10px 45px;
+  /* For cases where .title is an <a>. */
+  text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
