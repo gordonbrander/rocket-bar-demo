@@ -236,14 +236,13 @@ with how actions are rendered (widgets, autocomplete, etc). */
 of an .action-match. */
 .action-results {
   overflow: hidden;
-  padding: 0 0 0 45px;
 }
 
 .action-results > .title {
   color: #8a9699;
   font-size: 12px;
   line-height: 18px;
-  margin: 14px 0 14px 0;
+  margin: 14px 0 14px 45px;
   text-transform: uppercase;
 }
 
@@ -259,7 +258,7 @@ of an .action-match. */
 .action-result {
   display: block;
   height: 32px;
-  padding: 10px 10px 11px 0;
+  padding: 10px 10px 11px 45px;
 }
 .action-result > .title {
   font-size: 14px;
@@ -277,7 +276,7 @@ of an .action-match. */
   border-radius: 50%;
   content: '';
   height: 7px;
-  left: -26px;
+  left: 19px;
   position: absolute;
   top: 13px;
   width: 7px;
@@ -304,7 +303,7 @@ a.action-more
   white-space: nowrap;
 }
 .action-more {
-  background: url(assets/result-delimiter.png) right 0 no-repeat,
+  background: url(assets/result-delimiter.png) left 0 no-repeat,
               url(assets/arrow-fwd.png) right center no-repeat;
 }
 .action-more-plain {
