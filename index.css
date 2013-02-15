@@ -109,7 +109,8 @@ Used to define background images for entries. */
 .maps-gaiamobile-org:before,
 .facebook-com:before,
 .imdb-com:before,
-.yelp-com:before {
+.yelp-com:before,
+.groupon-com:before {
   content: '';
   background-repeat: no-repeat;
   background-size: 30px auto;
@@ -154,16 +155,22 @@ Used to define background images for entries. */
   background-image: url(assets/Icon_Yelp.png);
   top: 110px;
 }
+.groupon-com:before {
+  background-image: url(assets/Icon_Groupon.png);
+}
 
 .yelp-com-map {
   display: block;
 }
 
 .action-response {
-  font-size: 16px;
+  background: #313131;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 14px;
   font-weight: normal;
-  padding: 20px 10px 8px;
-  margin: 0;
+  padding: 8px 10px 8px;
+  margin: 10px;
 }
 
 /* Individual action inside of an .action-match container.
@@ -250,6 +257,7 @@ of an .action-match. */
   background: none;
 }
 .action-result {
+  display: block;
   height: 32px;
   padding: 10px 10px 11px 0;
 }
@@ -273,6 +281,37 @@ of an .action-match. */
   position: absolute;
   top: 13px;
   width: 7px;
+}
+
+/* .action-more -- a "more" link.
+
+Usage:
+
+a.action-more
+*/
+.action-more,
+.action-more-plain {
+  color: #8a9699;
+  display: block;
+  font: normal normal 14px/20px MozTT, sans-serif;
+  height: 20px;
+  overflow: hidden;
+  margin-left: 45px;
+  padding: 16px 30px 17px 0;
+  text-align: right;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.action-more {
+  background: url(assets/result-delimiter.png) right 0 no-repeat,
+              url(assets/arrow-fwd.png) right center no-repeat;
+}
+.action-more-plain {
+  background: url(assets/arrow-fwd.png) right center no-repeat;
+}
+.action-results > .action-more {
+  margin-left: 0;
 }
 
 /* Action insert for in-place app rendering. */

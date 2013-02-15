@@ -314,16 +314,17 @@
             <input type="input" class="action-bar" id="action-bar" placeholder="Search for anything&hellip;" value="">
           </div>
         </div>
-        <h1 class="action-response">Ok, I've sent your message to John Doe:</h1>
+        <blockquote class="action-response">Ok, I've sent your message to John Doe:</blockquote>
         <ul class="action-matches">
           <li class="action-match messages-gaiamobile-org">
             <article class="action-entry">
-              <h1 class="title">Conversation with John Doe</h1>
+              <h1 class="title">With John Doe</h1>
               <span class="subtitle">(555) 555-5555</span>
             </article>
             <div class="action-insert">
               <img src="./demo/sms-1.png" width="320" height="200">
             </div>
+            <a class="action-more-plain" href="#">Open in Messages</a>
           </li>
         </ul>
       </li>
@@ -333,16 +334,17 @@
             <input type="input" class="action-bar" id="action-bar" placeholder="Search for anything&hellip;" value="">
           </div>
         </div>
-        <h1 class="action-response">Ok, I've sent your message to John Doe:</h1>
+        <blockquote class="action-response">Ok, I've sent your message to John Doe:</blockquote>
         <ul class="action-matches">
           <li class="action-match messages-gaiamobile-org">
             <article class="action-entry">
-              <h1 class="title">Conversation with John Doe</h1>
+              <h1 class="title">With John Doe</h1>
               <span class="subtitle">(555) 555-5555</span>
             </article>
             <div class="action-insert">
               <img src="./demo/sms-2.png" width="320" height="200">
             </div>
+            <a class="action-more-plain" href="#">Open in Messages</a>
           </li>
         </ul>
       </li>
@@ -375,6 +377,7 @@
                   <h1 class="title">Sushi Time</h1>
                   <p class="subtitle">3000 24th St / Rating 4.0 / $$$</p>
                 </article>
+                <a class="action-more" href="#">4 more on Yelp.com</a>
               </section>
             </li>
             <li class="action-match contacts-gaiamobile-org">
@@ -401,6 +404,12 @@
                 </article>
              </section>
             </li>
+            <li class="action-match groupon-com">
+              <article class="action-entry">
+                <h1 class="title">Groupon Deals for Sushi</h1>
+                <span class="subtitle">4 deals for sushi near you</span>
+              </article>
+            </li>
             <li class="action-match browser-gaiamobile-org">
               <section class="action-results">
                 <h1 class="title">Web Results for Sushi</h1>
@@ -424,6 +433,7 @@
                   <b class="title">Tataki</b>
                   <span class="subtitle">tatakisushibar.com</span>
                 </article>
+                <a class="action-more" href="#">1,060,000,000 more on Google</a>
               </section>
             </li>
           </ul>
@@ -442,6 +452,10 @@
     var STATE = {
       current: 0
     };
+
+    function isTouchSupport() {
+      return !!('ontouchstart' in document.documentElement);
+    }
 
     function lambda(method) {
       // Convert a method func that uses a `this` context into a function that takes
@@ -527,17 +541,14 @@
 
     var currentSlide = activateSlide(slidesUlEl, 0);
 
-    slideshowEl.addEventListener('click', function (event)  {
+    var eventName = isTouchSupport() ? 'touchstart' : 'click';
+    slideshowEl.addEventListener(eventName, function (event)  {
       if (event.target === nextEl) {
         goNextSlide(slidesUlEl, STATE);
         event.preventDefault();
       }
       else if (event.target === prevEl) {
         goPrevSlide(slidesUlEl, STATE);
-        event.preventDefault();
-      }
-      else {
-        activateSlideBySelector(slidesUlEl, event.target.hash, STATE);
         event.preventDefault();
       }
     });
