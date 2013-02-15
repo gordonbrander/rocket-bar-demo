@@ -250,7 +250,7 @@ of an .action-match. */
 /* Action results are lists of search results from various apps. */
 .action-result,
 .action-results {
-  background: url(assets/result-delimiter.png) right 0 no-repeat;
+  background: url(assets/result-delimiter.png) left 0 no-repeat;
 }
 .action-results:first-child,
 .action-result:first-child {
