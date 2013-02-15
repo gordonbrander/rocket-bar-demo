@@ -250,6 +250,7 @@ of an .action-match. */
   background: none;
 }
 .action-result {
+  display: block;
   height: 32px;
   padding: 10px 10px 11px 0;
 }
@@ -273,6 +274,31 @@ of an .action-match. */
   position: absolute;
   top: 13px;
   width: 7px;
+}
+
+/* .action-more -- a "more" link.
+
+Usage:
+
+a.action-more
+*/
+.action-more {
+  background: url(assets/result-delimiter.png) right 0 no-repeat,
+              url(assets/arrow-fwd.png) right center no-repeat;
+  color: #8a9699;
+  display: block;
+  font: normal normal 14px/20px MozTT, sans-serif;
+  height: 20px;
+  overflow: hidden;
+  margin-left: 45px;
+  padding: 16px 30px 17px 0;
+  text-align: right;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.action-results > .action-more {
+  margin-left: 0;
 }
 
 /* Action insert for in-place app rendering. */
