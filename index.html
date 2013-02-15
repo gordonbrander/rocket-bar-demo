@@ -445,6 +445,10 @@
       current: 0
     };
 
+    function isTouchSupport() {
+      return !!('ontouchstart' in document.documentElement);
+    }
+
     function lambda(method) {
       // Convert a method func that uses a `this` context into a function that takes
       // the context object as the first parameter.
@@ -529,17 +533,14 @@
 
     var currentSlide = activateSlide(slidesUlEl, 0);
 
-    slideshowEl.addEventListener('click', function (event)  {
+    var eventName = isTouchSupport() ? 'touchstart' : 'click';
+    slideshowEl.addEventListener(eventName, function (event)  {
       if (event.target === nextEl) {
         goNextSlide(slidesUlEl, STATE);
         event.preventDefault();
       }
       else if (event.target === prevEl) {
         goPrevSlide(slidesUlEl, STATE);
-        event.preventDefault();
-      }
-      else {
-        activateSlideBySelector(slidesUlEl, event.target.hash, STATE);
         event.preventDefault();
       }
     });
