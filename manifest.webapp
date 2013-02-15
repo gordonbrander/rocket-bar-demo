@@ -1,5 +1,5 @@
 {
     "name": "RocketBar Demo",
     "description": "An example of Live Deep Search for Firefox OS",
-    "launch_path": "./index.html"
+    "launch_path": "/rocket-bar-demo/index.html"
 }
