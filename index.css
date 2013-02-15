@@ -160,10 +160,13 @@ Used to define background images for entries. */
 }
 
 .action-response {
-  font-size: 16px;
+  background: #313131;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 14px;
   font-weight: normal;
-  padding: 20px 10px 8px;
-  margin: 0;
+  padding: 8px 10px 8px;
+  margin: 10px;
 }
 
 /* Individual action inside of an .action-match container.
@@ -282,9 +285,8 @@ Usage:
 
 a.action-more
 */
-.action-more {
-  background: url(assets/result-delimiter.png) right 0 no-repeat,
-              url(assets/arrow-fwd.png) right center no-repeat;
+.action-more,
+.action-more-plain {
   color: #8a9699;
   display: block;
   font: normal normal 14px/20px MozTT, sans-serif;
@@ -296,6 +298,13 @@ a.action-more
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.action-more {
+  background: url(assets/result-delimiter.png) right 0 no-repeat,
+              url(assets/arrow-fwd.png) right center no-repeat;
+}
+.action-more-plain {
+  background: url(assets/arrow-fwd.png) right center no-repeat;
 }
 .action-results > .action-more {
   margin-left: 0;
