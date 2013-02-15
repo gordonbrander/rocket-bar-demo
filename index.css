@@ -109,7 +109,8 @@ Used to define background images for entries. */
 .maps-gaiamobile-org:before,
 .facebook-com:before,
 .imdb-com:before,
-.yelp-com:before {
+.yelp-com:before,
+.groupon-com:before {
   content: '';
   background-repeat: no-repeat;
   background-size: 30px auto;
@@ -153,6 +154,9 @@ Used to define background images for entries. */
 .yelp-com:before {
   background-image: url(assets/Icon_Yelp.png);
   top: 110px;
+}
+.groupon-com:before {
+  background-image: url(assets/Icon_Groupon.png);
 }
 
 .yelp-com-map {
