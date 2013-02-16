@@ -1,0 +1,124 @@
+html {
+  background: #eee;
+}
+
+.keyboard {
+  background: rgba(0, 0, 0, .5);
+  bottom: 0;
+  height: 200px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}
+.screen:hover .keyboard {
+  display: none;
+}
+
+.sticky-group {
+  color: #333;
+  font: MozTT, sans-serif;
+}
+
+.sticky-pointer {
+  background: #E66000;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .9);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  margin: -10px 0 0 -10px;
+  position: absolute;
+  text-align: center;
+  z-index: 999;
+}
+.sticky-group:hover .sticky-pointer {
+  font-size: 14px;
+  border-radius: 30px;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  margin: -15px 0 0 -15px;
+}
+
+.sticky {
+  background: #fff3c2;
+  border: 1px solid #e8c68c;
+  border-top-width: 3px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .07);
+  font: 12px/1.5 sans-serif;
+  height: 90px;
+  min-height: 90px;
+  left: 330px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1.2em;
+  position: absolute;
+  transition: .25s opacity linear;
+  width: 220px;
+}
+
+html:hover .sticky {
+  opacity: 1;
+}
+
+.sticky-group:hover > .sticky {
+  border-top-color: #E66000;
+  height: auto;
+  z-index: 998;
+}
+
+.sticky p,
+.sticky ul,
+.sticky ol {
+  margin-bottom: 9px;
+  margin-top: 9px;
+}
+
+.screen-320x480 {
+  min-height: 480px;
+  width: 320px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.step {
+  padding: 10px 20px;
+  position: relative;
+}
+
+.step:nth-child(even) {
+  background: #ddd;
+}
+
+.step-header {
+  margin-bottom: 20px;
+}
+
+.step-title {
+  font: normal normal 18px/20px "MozTT", sans-serif;
+  color: #E66000;
+  margin: 10px 0 10px;
+  width: 320px;
+}
+
+.step-intro {
+  font: 14px/20px "MozTT", sans-serif;
+  color: #444;
+  margin: 0 0 10px;
+  width: 320px;
+}
+
+.step-me {
+  background: #aaa;
+  border-radius: 3px;
+  font: 14px/20px "MozTT", sans-serif;
+  color: #333;
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  width: 300px;
+}
