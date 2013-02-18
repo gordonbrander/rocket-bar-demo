@@ -1,5 +1,11 @@
 {
     "name": "RocketBar Demo",
-    "description": "An example of Live Deep Search for Firefox OS",
-    "launch_path": "./index.html"
+    "description": "Live Deep Search demo for Firefox OS",
+    "developer": {
+      "name": "Mozilla",
+      "url": "https://github.com/gordonbrander/rocket-bar-demo"
+    },
+    "launch_path": "/index.html",
+    "appcache_path": "/manifest.appcache",
+    "orientation": "portrait-primary"
 }
