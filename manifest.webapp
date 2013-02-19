@@ -5,6 +5,9 @@
       "name": "Mozilla",
       "url": "https://github.com/gordonbrander/rocket-bar-demo"
     },
+    "icons": {
+      "60": "/assets/app-default.png"
+    },
     "launch_path": "/index.html",
     "appcache_path": "/manifest.appcache",
     "orientation": "portrait-primary"
