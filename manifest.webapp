@@ -6,7 +6,8 @@
       "url": "https://github.com/gordonbrander/rocket-bar-demo"
     },
     "icons": {
-      "60": "/assets/app-default.png"
+      "60": "/assets/app-60x60.png",
+      "128": "/assets/app-128x128.png"
     },
     "launch_path": "/index.html",
     "appcache_path": "/manifest.appcache",
