@@ -10,7 +10,7 @@ index.css
 # fine on Firefox, but failed on FirefoxOS. After running a man-in-the-middle
 # proxy on the Gaia simulator, I discovered HTTP requests for `assets/*`,
 # `demo/*`.
-ssets/arrow-fwd.png
+assets/arrow-fwd.png
 assets/bookmarked.png
 assets/Icon_Bookmark.png
 assets/Icon_Browser_Unbranded.png
