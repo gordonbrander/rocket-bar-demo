@@ -3,5 +3,35 @@ CACHE MANIFEST
 index.html
 normalize.css
 index.css
-assets/*
-demo/*
+# 2013-02-28 GB - b2g's Gecko doesn't seem to support appcache * directives, leaving us no
+# meaning we have to list all assets explicitly.
+#
+# When I tried using `assets/*`, `demo/*`, the install worked
+# fine on Firefox, but failed on FirefoxOS. After running a man-in-the-middle
+# proxy on the Gaia simulator, I discovered HTTP requests for `assets/*`,
+# `demo/*`.
+ssets/arrow-fwd.png
+assets/bookmarked.png
+assets/Icon_Bookmark.png
+assets/Icon_Browser_Unbranded.png
+assets/Icon_Calendar.png
+assets/Icon_Contacts.png
+assets/Icon_Default.png
+assets/Icon_Dialer.png
+assets/Icon_E-Mail.png
+assets/Icon_Facebook.png
+assets/Icon_Groupon.png
+assets/Icon_Here_Maps.png
+assets/Icon_Imdb.png
+assets/Icon_Music.png
+assets/Icon_SMS.png
+assets/Icon_Video.png
+assets/Icon_Yelp.png
+assets/progress.png
+assets/result-delimiter.png
+assets/search.png
+assets/tear-off-bottom.png
+assets/tear-off-top.png
+demo/map.png
+demo/sms-1.png
+demo/sms-2.png
