@@ -514,6 +514,8 @@
       // Add activated class
       slidesUlEl.children[boundedIndex].classList.add(activatedClass);
 
+      window.location.hash = '';
+
       // Return the index affected.
       return boundedIndex;
     }
