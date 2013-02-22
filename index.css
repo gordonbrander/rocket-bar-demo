@@ -71,7 +71,7 @@ elements can't ever be truly width: auto; */
   padding: 4px 8px 4px 36px;
   width: 100%;
 }
-.action-bar::-moz-placeholder {
+.action-bar:-moz-placeholder {
   color: #999;
   opacity: 1;
 }
