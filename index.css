@@ -65,10 +65,15 @@ elements can't ever be truly width: auto; */
   border-radius: 5px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  color: #222;
   font: 14px/16px MozTT, sans-serif;
   height: 34px;
   padding: 4px 8px 4px 36px;
   width: 100%;
+}
+.action-bar:-moz-placeholder {
+  color: #999;
+  opacity: 1;
 }
 
 /* Basic shared list style that nukes default bulllets. */
