@@ -10,6 +10,6 @@
       "128": "/assets/app-128x128.png"
     },
     "launch_path": "/index.html",
-    "appcache_path": "/manifest.appcache",
+    "appcache_path": "/manifest.appcache?v=0.0.1",
     "orientation": "portrait-primary"
 }
