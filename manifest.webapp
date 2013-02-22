@@ -10,6 +10,6 @@
       "128": "/rocket-bar-demo/assets/app-128x128.png"
     },
     "launch_path": "/rocket-bar-demo/index.html",
-    "appcache_path": "/rocket-bar-demo/manifest.appcache",
+    "appcache_path": "/rocket-bar-demo/manifest.appcache?v=0.0.1",
     "orientation": "portrait-primary"
 }
