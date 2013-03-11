@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="normalize.css" type="text/css">
   <link rel="stylesheet" href="index.css" type="text/css">
   <style type="text/css" media="all">
+    .screen { background: #999; }
     /* Demo slides
     ---------------------------------------------------------------------------
 
@@ -42,13 +43,18 @@
     ------------------------------------------------------------------------ */
 
     .demo-slideshow {
+      background: #363636;
+      height: 480px;
+      overflow: auto;
+      width: 320px;
       position: relative;
+      margin: 30px auto;
     }
 
     .demo-prev,
     .demo-next {
       bottom: 0;
-      position: fixed;
+      position: absolute;
       top: 0;
       width: 30px;
       z-index: 999;
@@ -76,7 +82,6 @@
   </style>
 </head>
 <body>
-  <button id="install">Install</button>
   <section class="demo-slideshow" id="demo-slideshow">
     <a class="demo-prev" id="demo-prev" href="#go-prev"></a>
     <a class="demo-next" id="demo-next" href="#go-next"></a>
@@ -559,21 +564,6 @@
         event.preventDefault();
       }
     });
-
-    if(navigator.mozApps) {
-      var btn = document.getElementById('install');
-
-      btn.addEventListener('click', function() {
-        navigator.mozApps.install(location.href + 'manifest.webapp');
-      });
-
-      var req = navigator.mozApps.getSelf();
-      req.onsuccess = function() {
-        if(!req.result) {
-          document.getElementById('install').style.display = 'block';
-        }
-      };
-    }
   </script>
 </body>
 </html>
