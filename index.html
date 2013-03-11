@@ -486,7 +486,7 @@
         element.querySelectorAll(selector) : document.querySelectorAll(selector);
     }
 
-    function within(num, min, max) {
+    function clamp(num, min, max) {
       // Normalize a number such that:
       //
       // * If it is less than min, min will be returned
@@ -503,7 +503,7 @@
 
       // Make sure the index does not fall outside of the range
       // of the number of elements.
-      var boundedIndex = within(index, 0, childrenLength - 1);
+      var clampedIndex = clamp(index, 0, childrenLength - 1);
 
       var activatedClass = 'demo-slide-activated';
 
@@ -512,12 +512,12 @@
       }
 
       // Add activated class
-      slidesUlEl.children[boundedIndex].classList.add(activatedClass);
+      slidesUlEl.children[clampedIndex].classList.add(activatedClass);
 
       window.location.hash = '';
 
       // Return the index affected.
-      return boundedIndex;
+      return clampedIndex;
     }
 
     function goNextSlide(slidesUlEl, state) {
