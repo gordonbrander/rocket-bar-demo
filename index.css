@@ -2,21 +2,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+html {
+  font: 16px "MozTT", sans-serif;
+}
+
 a:focus,
 a:active {
   outline: none;
 }
 
 .screen {
-  background: #363636;
+  background: #333;
   color: #fff;
-  font: 12px MozTT, sans-serif;
+  font: 12px "MozTT", sans-serif;
 }
 
 .action-header {
-  background: #242424;
-  border-bottom: 1px solid #383838;
-  box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+  background: #46494c;
+  border-radius: 0 0 16px 0;
   overflow: hidden;
   /* The extra 1px gives the loading bar a bit of room to breathe. */
   padding-bottom: 1px;

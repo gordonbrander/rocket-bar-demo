@@ -10,12 +10,27 @@
   <link rel="stylesheet" href="normalize.css" type="text/css">
   <link rel="stylesheet" href="index.css" type="text/css">
   <style type="text/css" media="all">
+    .demo-stage {
+      height: 708px;
+      left: 50%;
+      margin: -354px 0 0 -178px;
+      position: absolute;
+      top: 50%;
+      width: 356px;
+    }
+
+    .demo-phone-frame {
+      background: url(demo/phone-frame.png) 0 0 no-repeat;
+      height: 708px;
+      position: absolute;
+      width: 356px;
+    }
+
     /* Demo slides
     ---------------------------------------------------------------------------
 
     Each slide represents a state. Positioned off-screen to allow layout to
     occur invisibly off to the side. */
-
     .demo-slides {
       list-style: none;
       margin: 0;
@@ -42,13 +57,21 @@
     ------------------------------------------------------------------------ */
 
     .demo-slideshow {
-      position: relative;
+      background: #363636;
+      border-radius: 3px;
+      height: 480px;
+      overflow: auto;
+      width: 320px;
+      left: 17px;
+      margin: 30px auto;
+      position: absolute;
+      top: 84px;
     }
 
     .demo-prev,
     .demo-next {
       bottom: 0;
-      position: fixed;
+      position: absolute;
       top: 0;
       width: 30px;
       z-index: 999;
@@ -61,397 +84,387 @@
     .demo-next {
       right: 0;
     }
-
-    #install {
-      position: absolute;
-      top: 3em;
-      right: 0;
-      font-size: 1.5em;
-      border: 1px solid grey;
-      padding: .25em .5em;
-      margin: .5em 1em;
-      display: none;
-      z-index: 1000;
-    }
   </style>
 </head>
 <body>
-  <button id="install">Install</button>
-  <section class="demo-slideshow" id="demo-slideshow">
-    <a class="demo-prev" id="demo-prev" href="#go-prev"></a>
-    <a class="demo-next" id="demo-next" href="#go-next"></a>
-    <ul id="demo-slides" class="demo-slides">
-      <li class="demo-slide">
-        <form action="" method="get" class="action-pallette">
+  <div class="demo-stage">
+    <div class="demo-phone-frame"></div>
+    <section class="demo-slideshow" id="demo-slideshow">
+      <a class="demo-prev" id="demo-prev" href="#go-prev"></a>
+      <a class="demo-next" id="demo-next" href="#go-next"></a>
+      <ul id="demo-slides" class="demo-slides">
+        <li class="demo-slide">
+          <form action="" method="get" class="action-pallette">
+            <div class="action-header">
+              <div class="action-fields">
+                <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="">
+              </div>
+              <ul class="action-completions">
+              </ul>
+            </div>
+            <ul class="action-matches action-list" id="matches">
+            </ul>
+          </form>
+        </li>
+        <li class="demo-slide">
+          <form action="" method="get" class="action-pallette">
+            <div class="action-header">
+              <div class="action-fields">
+                <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="al">
+              </div>
+              <ul class="action-completions">
+                <li class="action-completion">
+                  <a href="#demo-slide-conversation-stream" class="title"><b>Al</b>i Jones</a>
+                </li>
+                <li class="action-completion">
+                  <span class="title"><b>Al</b>bert Fedora</span>
+                </li>
+              </ul>
+            </div>
+            <ul class="action-matches action-list" id="matches">
+              <li class="action-match messages-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Ali Jones</h1>
+                    <p class="subtitle">Still interested in lunch tomorrow?</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Albert Fedora</h1>
+                    <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Alice Smith</h1>
+                    <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match contacts-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Ali Jones</h1>
+                    <p class="subtitle">(555) 555-5555</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Albert Fedora</h1>
+                    <p class="subtitle">(555) 339-5353</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match music-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">Bishop Allen</h1>
+                  <span class="subtitle">Artist / 14 songs / 3 Albums</span>
+                </article>
+              </li>
+              <li class="action-match email-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Amy Jo Alexander</h1> <p class="subtitle">Re: Espresso tips from a pro</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Albert Fedora</h1>
+                    <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Alice Smith</h1>
+                    <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match facebook-com">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Ali Jones</h1>
+                    <p class="subtitle">Thank you for getting in touch. Yesterday's&hellip;</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Amy Wong</h1>
+                    <p class="subtitle">Alcatraz Tour &mdash; Join us for cocktails and hor'devours this tuesday at&hellip;</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match bookmarks-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">A List Apart</h1>
+                    <p class="subtitle">alistapart.com</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Ali Jones's Blog</h1>
+                    <p class="subtitle">johndoe.wordpress.com</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">The REAL FORK Project by Jon Whitman</h1>
+                    <p class="subtitle">kickstarter.com/projects/1061512679</p>
+                  </article>
+               </section>
+              </li>
+              <li class="action-match browser-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">Search the web for "al"</h1>
+                  <span class="subtitle">Google about 1,060,000,000 results</span>
+                </article>
+              </li>
+            </ul>
+          </form>
+        </li>
+        <li class="demo-slide" id="demo-slide-conversation-stream">
+          <form action="" method="get" class="action-pallette">
+            <div class="action-header">
+              <div class="action-fields">
+                <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="Ali Jones">
+              </div>
+              <div class="action-loading"><span>Loading</span></div>
+            </div>
+            <ul class="action-matches" id="matches">
+              <li class="action-match messages-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">SMS Ali Jones</h1>
+                  <span class="subtitle">(555) 555-5555</span>
+                </article>
+                <section class="action-results">
+                  <article class="action-result action-result-unread">
+                    <h1 class="title">Still interested in lunch tomorrow?</h1>
+                    <p class="subtitle">Yesterday at 9:00am</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match dialer-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">Call Ali Jones</h1>
+                  <span class="subtitle">(555) 555-5555</span>
+                </article>
+              </li>
+              <li class="action-match email-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">Email Ali Jones</h1>
+                  <span class="subtitle">john.doe@example.com</span>
+                </article>
+                <section class="action-results">
+                  <article class="action-result action-result-unread">
+                    <h1 class="title">In SFO for Asymconf</h1>
+                    <p class="subtitle">Yesterday &mdash; I was thinking about using Caltrain since the</p>
+                  </article>
+                  <article class="action-result action-result-unread">
+                    <h1 class="title">Re: 1.1 Review meeting notes</h1>
+                    <p class="subtitle">Jan 23 &mdash; Awesome, thank you sir, that all makes perfect sense :)</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">FXOS Icon Guidelines</h1>
+                    <p class="subtitle">Dec 11 &mdash; Speaking of which: http://www.mozilla.org/en-US/styleguide/products/firefoxos/icons/</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match facebook-com">
+                <article class="action-entry">
+                  <h1 class="title">Message Ali Jones</h1>
+                  <span class="subtitle">Facebook Message</span>
+                </article>
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Thank you for getting in touch. Yesterday's&hellip;</h1>
+                    <p class="subtitle">Yesterday at 9:00am</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">I agree. I wonder how long&hellip;</h1>
+                    <p class="subtitle">Yesterday at 9:00am</p>
+                  </article>
+                  <article class="action-result action-result-unread">
+                    <h1 class="title">I should be able to drop by before we&hellip;</h1>
+                    <p class="subtitle">Yesterday at 9:00am</p>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match bookmarks-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Ali Jones's Blog</h1>
+                    <p class="subtitle">johndoe.wordpress.com</p>
+                  </article>
+               </section>
+              </li>
+              <li class="action-match contacts-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title"> Ali Jones</h1>
+                  <span class="subtitle">View contact info</span>
+                </article>
+              </li>
+            </ul>
+          </form>
+        </li>
+        <li class="demo-slide">
+          <form action="" method="get" class="action-pallette">
+            <div class="action-header">
+              <div class="action-fields">
+                <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="Ali Jones how about sushi tomorrow?">
+              </div>
+            </div>
+            <ul class="action-matches" id="matches">
+              <li class="action-match messages-gaiamobile-org">
+                <a class="action-entry" href="#demo-slide-sms-sent">
+                  <h1 class="title">SMS Ali Jones</h1>
+                  <span class="subtitle">how about sushi tomorrow?</span>
+                </a>
+              </li>
+                 <li class="action-match email-gaiamobile-org">
+                <article class="action-entry">
+                  <h1 class="title">Email Ali Jones</h1>
+                  <span class="subtitle">how about sushi tomorrow?</span>
+                </article>
+              </li>
+              <li class="action-match facebook-com">
+                <article class="action-entry">
+                  <h1 class="title">Message Ali Jones</h1>
+                  <span class="subtitle">how about sushi tomorrow?</span>
+                </article>
+              </li>
+            </ul>
+          </form>
+        </li>
+        <li class="demo-slide" id="demo-slide-sms-sent">
           <div class="action-header">
             <div class="action-fields">
               <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="">
             </div>
-            <ul class="action-completions">
-            </ul>
           </div>
-          <ul class="action-matches action-list" id="matches">
-          </ul>
-        </form>
-      </li>
-      <li class="demo-slide">
-        <form action="" method="get" class="action-pallette">
-          <div class="action-header">
-            <div class="action-fields">
-              <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="al">
-            </div>
-            <ul class="action-completions">
-              <li class="action-completion">
-                <a href="#demo-slide-conversation-stream" class="title"><b>Al</b>i Jones</a>
-              </li>
-              <li class="action-completion">
-                <span class="title"><b>Al</b>bert Fedora</span>
-              </li>
-            </ul>
-          </div>
-          <ul class="action-matches action-list" id="matches">
-            <li class="action-match messages-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Ali Jones</h1>
-                  <p class="subtitle">Still interested in lunch tomorrow?</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Albert Fedora</h1>
-                  <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Alice Smith</h1>
-                  <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match contacts-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Ali Jones</h1>
-                  <p class="subtitle">(555) 555-5555</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Albert Fedora</h1>
-                  <p class="subtitle">(555) 339-5353</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match music-gaiamobile-org">
-              <article class="action-entry">
-                <h1 class="title">Bishop Allen</h1>
-                <span class="subtitle">Artist / 14 songs / 3 Albums</span>
-              </article>
-            </li>
-            <li class="action-match email-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Amy Jo Alexander</h1> <p class="subtitle">Re: Espresso tips from a pro</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Albert Fedora</h1>
-                  <p class="subtitle">Hey man! I'm in SF. Up for a beer?</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Alice Smith</h1>
-                  <p class="subtitle">There's a good burger joint up by Yerba Buena called Super Duper</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match facebook-com">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Ali Jones</h1>
-                  <p class="subtitle">Thank you for getting in touch. Yesterday's&hellip;</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Amy Wong</h1>
-                  <p class="subtitle">Alcatraz Tour &mdash; Join us for cocktails and hor'devours this tuesday at&hellip;</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match bookmarks-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">A List Apart</h1>
-                  <p class="subtitle">alistapart.com</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Ali Jones's Blog</h1>
-                  <p class="subtitle">johndoe.wordpress.com</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">The REAL FORK Project by Jon Whitman</h1>
-                  <p class="subtitle">kickstarter.com/projects/1061512679</p>
-                </article>
-             </section>
-            </li>
-            <li class="action-match browser-gaiamobile-org">
-              <article class="action-entry">
-                <h1 class="title">Search the web for "al"</h1>
-                <span class="subtitle">Google about 1,060,000,000 results</span>
-              </article>
-            </li>
-          </ul>
-        </form>
-      </li>
-      <li class="demo-slide" id="demo-slide-conversation-stream">
-        <form action="" method="get" class="action-pallette">
-          <div class="action-header">
-            <div class="action-fields">
-              <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="Ali Jones">
-            </div>
-            <div class="action-loading"><span>Loading</span></div>
-          </div>
-          <ul class="action-matches" id="matches">
+          <blockquote class="action-response">Ok, I've sent your message to Ali Jones:</blockquote>
+          <ul class="action-matches">
             <li class="action-match messages-gaiamobile-org">
               <article class="action-entry">
-                <h1 class="title">SMS Ali Jones</h1>
+                <h1 class="title">With Ali Jones</h1>
                 <span class="subtitle">(555) 555-5555</span>
               </article>
-              <section class="action-results">
-                <article class="action-result action-result-unread">
-                  <h1 class="title">Still interested in lunch tomorrow?</h1>
-                  <p class="subtitle">Yesterday at 9:00am</p>
-                </article>
-              </section>
+              <div class="action-insert" style="width: 320px;">
+                <img src="./demo/sms-1.png" width="320" height="200">
+              </div>
+              <a class="action-more-plain" href="#">Open in Messages</a>
             </li>
-            <li class="action-match dialer-gaiamobile-org">
+          </ul>
+        </li>
+        <li class="demo-slide" id="demo-slide-sms-reply">
+          <div class="action-header">
+            <div class="action-fields">
+              <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="">
+            </div>
+          </div>
+          <blockquote class="action-response">Ok, I've sent your message to Ali Jones:</blockquote>
+          <ul class="action-matches">
+            <li class="action-match messages-gaiamobile-org">
               <article class="action-entry">
-                <h1 class="title">Call Ali Jones</h1>
+                <h1 class="title">With Ali Jones</h1>
                 <span class="subtitle">(555) 555-5555</span>
               </article>
-            </li>
-            <li class="action-match email-gaiamobile-org">
-              <article class="action-entry">
-                <h1 class="title">Email Ali Jones</h1>
-                <span class="subtitle">john.doe@example.com</span>
-              </article>
-              <section class="action-results">
-                <article class="action-result action-result-unread">
-                  <h1 class="title">In SFO for Asymconf</h1>
-                  <p class="subtitle">Yesterday &mdash; I was thinking about using Caltrain since the</p>
-                </article>
-                <article class="action-result action-result-unread">
-                  <h1 class="title">Re: 1.1 Review meeting notes</h1>
-                  <p class="subtitle">Jan 23 &mdash; Awesome, thank you sir, that all makes perfect sense :)</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">FXOS Icon Guidelines</h1>
-                  <p class="subtitle">Dec 11 &mdash; Speaking of which: http://www.mozilla.org/en-US/styleguide/products/firefoxos/icons/</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match facebook-com">
-              <article class="action-entry">
-                <h1 class="title">Message Ali Jones</h1>
-                <span class="subtitle">Facebook Message</span>
-              </article>
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Thank you for getting in touch. Yesterday's&hellip;</h1>
-                  <p class="subtitle">Yesterday at 9:00am</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">I agree. I wonder how long&hellip;</h1>
-                  <p class="subtitle">Yesterday at 9:00am</p>
-                </article>
-                <article class="action-result action-result-unread">
-                  <h1 class="title">I should be able to drop by before we&hellip;</h1>
-                  <p class="subtitle">Yesterday at 9:00am</p>
-                </article>
-              </section>
-            </li>
-            <li class="action-match bookmarks-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Ali Jones's Blog</h1>
-                  <p class="subtitle">johndoe.wordpress.com</p>
-                </article>
-             </section>
-            </li>
-            <li class="action-match contacts-gaiamobile-org">
-              <article class="action-entry">
-                <h1 class="title"> Ali Jones</h1>
-                <span class="subtitle">View contact info</span>
-              </article>
+              <div class="action-insert" style="width: 320px;">
+                <img src="./demo/sms-2.png" width="320" height="200">
+              </div>
+              <a class="action-more-plain" href="#">Open in Messages</a>
             </li>
           </ul>
-        </form>
-      </li>
-      <li class="demo-slide">
-        <form action="" method="get" class="action-pallette">
-          <div class="action-header">
-            <div class="action-fields">
-              <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="Ali Jones how about sushi tomorrow?">
+        </li>
+        <li class="demo-slide">
+          <form action="" method="get" class="action-pallette">
+            <div class="action-header">
+              <div class="action-fields">
+                <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="sushi">
+              </div>
+              <div class="action-loading"><span>Loading</span></div>
             </div>
-          </div>
-          <ul class="action-matches" id="matches">
-            <li class="action-match messages-gaiamobile-org">
-              <a class="action-entry" href="#demo-slide-sms-sent">
-                <h1 class="title">SMS Ali Jones</h1>
-                <span class="subtitle">how about sushi tomorrow?</span>
-              </a>
-            </li>
-               <li class="action-match email-gaiamobile-org">
-              <article class="action-entry">
-                <h1 class="title">Email Ali Jones</h1>
-                <span class="subtitle">how about sushi tomorrow?</span>
-              </article>
-            </li>
-            <li class="action-match facebook-com">
-              <article class="action-entry">
-                <h1 class="title">Message Ali Jones</h1>
-                <span class="subtitle">how about sushi tomorrow?</span>
-              </article>
-            </li>
-          </ul>
-        </form>
-      </li>
-      <li class="demo-slide" id="demo-slide-sms-sent">
-        <div class="action-header">
-          <div class="action-fields">
-            <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="">
-          </div>
-        </div>
-        <blockquote class="action-response">Ok, I've sent your message to Ali Jones:</blockquote>
-        <ul class="action-matches">
-          <li class="action-match messages-gaiamobile-org">
-            <article class="action-entry">
-              <h1 class="title">With Ali Jones</h1>
-              <span class="subtitle">(555) 555-5555</span>
-            </article>
-            <div class="action-insert" style="width: 320px;">
-              <img src="./demo/sms-1.png" width="320" height="200">
-            </div>
-            <a class="action-more-plain" href="#">Open in Messages</a>
-          </li>
-        </ul>
-      </li>
-      <li class="demo-slide" id="demo-slide-sms-reply">
-        <div class="action-header">
-          <div class="action-fields">
-            <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="">
-          </div>
-        </div>
-        <blockquote class="action-response">Ok, I've sent your message to Ali Jones:</blockquote>
-        <ul class="action-matches">
-          <li class="action-match messages-gaiamobile-org">
-            <article class="action-entry">
-              <h1 class="title">With Ali Jones</h1>
-              <span class="subtitle">(555) 555-5555</span>
-            </article>
-            <div class="action-insert" style="width: 320px;">
-              <img src="./demo/sms-2.png" width="320" height="200">
-            </div>
-            <a class="action-more-plain" href="#">Open in Messages</a>
-          </li>
-        </ul>
-      </li>
-      <li class="demo-slide">
-        <form action="" method="get" class="action-pallette">
-          <div class="action-header">
-            <div class="action-fields">
-              <input type="text" class="action-bar" id="action-bar" disabled placeholder="Search for anything&hellip;" value="sushi">
-            </div>
-            <div class="action-loading"><span>Loading</span></div>
-          </div>
-          <ul class="action-matches" id="matches">
-            <li class="action-match yelp-com">
-              <img class="yelp-com-map" src="./demo/map.png" alt="" width="320" height="100" />
+            <ul class="action-matches" id="matches">
+              <li class="action-match yelp-com">
+                <img class="yelp-com-map" src="./demo/map.png" alt="" width="320" height="100" />
 
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Kiss Seafood</h1>
-                  <p class="subtitle">1700 Laguna St / Rating 4.75 / $$</p>
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Kiss Seafood</h1>
+                    <p class="subtitle">1700 Laguna St / Rating 4.75 / $$</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Kama Sushi</h1>
+                    <p class="subtitle">1497 Church St / Rating 4.5 / $$</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Saru Sushi Bar</h1>
+                    <p class="subtitle">3856 24th St / Rating 4.0 / $$</p>
+                  </article>
+                  <article class="action-result">
+                    <h1 class="title">Sushi Time</h1>
+                    <p class="subtitle">3000 24th St / Rating 4.0 / $$$</p>
+                  </article>
+                  <a class="action-more" href="#">4 more on Yelp.com</a>
+                </section>
+              </li>
+              <li class="action-match contacts-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Minako Organic Sushi</h1>
+                    <p class="subtitle">View contact info</p>
+                  </article>
+               </section>
+              </li>
+              <li class="action-match dialer-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Call Minako Organic Sushi</h1>
+                    <p class="subtitle">(415) 864-1888</p>
+                  </article>
+               </section>
+              </li>
+              <li class="action-match maps-gaiamobile-org">
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Map Minako Organic Sushi</h1>
+                    <p class="subtitle">2154 Mission St, San Francisco, CA 94110</p>
+                  </article>
+               </section>
+              </li>
+              <li class="action-match groupon-com">
+                <article class="action-entry">
+                  <h1 class="title">Groupon Deals for Sushi</h1>
+                  <span class="subtitle">2 deals for sushi near you</span>
                 </article>
-                <article class="action-result">
-                  <h1 class="title">Kama Sushi</h1>
-                  <p class="subtitle">1497 Church St / Rating 4.5 / $$</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Saru Sushi Bar</h1>
-                  <p class="subtitle">3856 24th St / Rating 4.0 / $$</p>
-                </article>
-                <article class="action-result">
-                  <h1 class="title">Sushi Time</h1>
-                  <p class="subtitle">3000 24th St / Rating 4.0 / $$$</p>
-                </article>
-                <a class="action-more" href="#">4 more on Yelp.com</a>
-              </section>
-            </li>
-            <li class="action-match contacts-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Minako Organic Sushi</h1>
-                  <p class="subtitle">View contact info</p>
-                </article>
-             </section>
-            </li>
-            <li class="action-match dialer-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Call Minako Organic Sushi</h1>
-                  <p class="subtitle">(415) 864-1888</p>
-                </article>
-             </section>
-            </li>
-            <li class="action-match maps-gaiamobile-org">
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Map Minako Organic Sushi</h1>
-                  <p class="subtitle">2154 Mission St, San Francisco, CA 94110</p>
-                </article>
-             </section>
-            </li>
-            <li class="action-match groupon-com">
-              <article class="action-entry">
-                <h1 class="title">Groupon Deals for Sushi</h1>
-                <span class="subtitle">2 deals for sushi near you</span>
-              </article>
-              <section class="action-results">
-                <article class="action-result">
-                  <h1 class="title">Half Off Sushi Dinner with Sake at Sushi Blvd</h1>
-                  <p class="subtitle"><strike>$50</strike> $25</p>
-                </article>
-                <article class="action-result">
-                  <b class="title">Up to 56% Off at Sushi Omakase</b>
-                  <span class="subtitle"><strike>$65</strike> $30</span>
-                </article>
-              </section>
-            </li>
-            <li class="action-match browser-gaiamobile-org">
-              <section class="action-results">
-                <h1 class="title">Web Results for Sushi</h1>
-                <article class="action-result">
-                  <h1 class="title">Sustainable Sushi</h1>
-                  <p class="subtitle">sustainablesushi.net &mdash; Trenor uses the topic of sustainable sushi to explore the connection between personal passion and effective activism.</p>
-                </article>
-                <article class="action-result">
-                  <b class="title">Sushi Guide</b>
-                  <span class="subtitle">eatsushi.com &mdash; The best, most complete sushi website. With an extensive sushi</span>
-                </article>
-                <article class="action-result">
-                  <b class="title">The Sushi FAQ</b>
-                  <span class="subtitle">sushifaq.com &mdash; What is sushi? What is sashimi? The Sushi FAQ is devoted to sushi and its culture.</span>
-                </article>
-                <article class="action-result">
-                  <b class="title">Blowfish Sushi to Die For</b>
-                  <span class="subtitle">blowfishsushi.com</span>
-                </article>
-                <article class="action-result">
-                  <b class="title">Tataki</b>
-                  <span class="subtitle">tatakisushibar.com</span>
-                </article>
-                <a class="action-more" href="#">1,060,000,000 more on Google</a>
-              </section>
-            </li>
-          </ul>
-        </form>
-      </li>
-    </ul>
-  </section>
+                <section class="action-results">
+                  <article class="action-result">
+                    <h1 class="title">Half Off Sushi Dinner with Sake at Sushi Blvd</h1>
+                    <p class="subtitle"><strike>$50</strike> $25</p>
+                  </article>
+                  <article class="action-result">
+                    <b class="title">Up to 56% Off at Sushi Omakase</b>
+                    <span class="subtitle"><strike>$65</strike> $30</span>
+                  </article>
+                </section>
+              </li>
+              <li class="action-match browser-gaiamobile-org">
+                <section class="action-results">
+                  <h1 class="title">Web Results for Sushi</h1>
+                  <article class="action-result">
+                    <h1 class="title">Sustainable Sushi</h1>
+                    <p class="subtitle">sustainablesushi.net &mdash; Trenor uses the topic of sustainable sushi to explore the connection between personal passion and effective activism.</p>
+                  </article>
+                  <article class="action-result">
+                    <b class="title">Sushi Guide</b>
+                    <span class="subtitle">eatsushi.com &mdash; The best, most complete sushi website. With an extensive sushi</span>
+                  </article>
+                  <article class="action-result">
+                    <b class="title">The Sushi FAQ</b>
+                    <span class="subtitle">sushifaq.com &mdash; What is sushi? What is sashimi? The Sushi FAQ is devoted to sushi and its culture.</span>
+                  </article>
+                  <article class="action-result">
+                    <b class="title">Blowfish Sushi to Die For</b>
+                    <span class="subtitle">blowfishsushi.com</span>
+                  </article>
+                  <article class="action-result">
+                    <b class="title">Tataki</b>
+                    <span class="subtitle">tatakisushibar.com</span>
+                  </article>
+                  <a class="action-more" href="#">1,060,000,000 more on Google</a>
+                </section>
+              </li>
+            </ul>
+          </form>
+        </li>
+      </ul>
+    </section>
+  </div>
   <script type="text/javascript">
     // Contains all slide app state.
     var STATE = {
@@ -486,7 +499,7 @@
         element.querySelectorAll(selector) : document.querySelectorAll(selector);
     }
 
-    function within(num, min, max) {
+    function clamp(num, min, max) {
       // Normalize a number such that:
       //
       // * If it is less than min, min will be returned
@@ -503,7 +516,7 @@
 
       // Make sure the index does not fall outside of the range
       // of the number of elements.
-      var boundedIndex = within(index, 0, childrenLength - 1);
+      var clampedIndex = clamp(index, 0, childrenLength - 1);
 
       var activatedClass = 'demo-slide-activated';
 
@@ -512,12 +525,12 @@
       }
 
       // Add activated class
-      slidesUlEl.children[boundedIndex].classList.add(activatedClass);
+      slidesUlEl.children[clampedIndex].classList.add(activatedClass);
 
       window.location.hash = '';
 
       // Return the index affected.
-      return boundedIndex;
+      return clampedIndex;
     }
 
     function goNextSlide(slidesUlEl, state) {
@@ -559,21 +572,6 @@
         event.preventDefault();
       }
     });
-
-    if(navigator.mozApps) {
-      var btn = document.getElementById('install');
-
-      btn.addEventListener('click', function() {
-        navigator.mozApps.install(location.href + 'manifest.webapp');
-      });
-
-      var req = navigator.mozApps.getSelf();
-      req.onsuccess = function() {
-        if(!req.result) {
-          document.getElementById('install').style.display = 'block';
-        }
-      };
-    }
   </script>
 </body>
 </html>
